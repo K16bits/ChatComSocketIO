@@ -17,7 +17,25 @@
             <input type="text" name="message" placeholder="Digite sua mensagem">
             <button type="submit">Enviar</button>
         </form>
-    </div>
+        <script type="text/javascript">
+            var socket = io('http://localhost:3000'); 
+
+            $('#chat').submit( event =>{
+                event.preventDefault();
+                var author = $('input[name=username]').val();
+                var message = $('input[name=message]').val();
+                console.log(`User: ${author} Mensagem: ${message}`)
+
+                if(author.length && message.length){
+                    var data = {
+                        authot : author,
+                        message: message,
+                    }
+                    socket.emit("sendMessage",data)
+                }
+        } )
+        </script>
+
 </body>
 
 </html>
