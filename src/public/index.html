@@ -12,13 +12,27 @@
 <body>
         <h1>ChatList</h1>
         <form id="chat">
-            <input type="text" name="username" placeholder="Digite seu usuário">
+            <input type="text" name="username" placeholder="Digite seu usuário" autocomplete="off">
             <div class="messages"></div>
-            <input type="text" name="message" placeholder="Digite sua mensagem">
+            <input type="text" name="message" placeholder="Digite sua mensagem" autocomplete="off">
             <button type="submit">Enviar</button>
         </form>
         <script type="text/javascript">
             var socket = io('http://localhost:3000'); 
+
+            function renderMessage(message){
+                $('.messages').append('<div class="messagesform"><strong>'+message.author+'<strong>:'+message.message+'</div>')
+            }
+
+            socket.on('previousMessages', messages =>{
+                for( message of messages){
+                    renderMessage(message);
+                }
+            })
+
+            socket.on('receiveMessage', message =>{
+                renderMessage(message);
+            })
 
             $('#chat').submit( event =>{
                 event.preventDefault();
@@ -28,9 +42,10 @@
 
                 if(author.length && message.length){
                     var data = {
-                        authot : author,
+                        author : author,
                         message: message,
                     }
+                    renderMessage(data);
                     socket.emit("sendMessage",data)
                 }
         } )
