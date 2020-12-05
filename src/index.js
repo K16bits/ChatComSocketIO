@@ -16,11 +16,8 @@ app.use('/',(req,res)=>{
     res.render('index.html');
 })
 
-// io.on('connection', socket =>{
-//     console.log(socket)
-// })
-io.on('sendMessage',data =>{
-    console.log(data);
+io.on('connection', socket =>{
+    console.log(`User: ${socket.id}`)
 })
 
-app.listen(3000)
+server.listen(3000)
