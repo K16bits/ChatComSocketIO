@@ -5,6 +5,7 @@
     border: 0;
     box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
+    background-color: #355070;
 }
 
 body{
@@ -14,7 +15,9 @@ body{
 
 h1{
     margin: 10px;
+    color: #FFF;
 }
+
 
 #chat {
     height: 100%;
@@ -29,6 +32,7 @@ input {
     height: 50px;
     padding: 0 20px;
     font-size: 14px;
+    color: #FFF;
 }
 
 button {
@@ -43,10 +47,17 @@ button {
     margin-top: 10px;
 }
 
-.messages {
+.messages{
     width: 600px;
     height: 400px;
     margin: 20px 0;
     border: 1px solid #ddd;
     padding: 20px;
+}
+
+.messagesform{
+    padding: 5px;
+    margin-right: 350px;
+    color: #FFF;
+    font-size: medium;
 }
