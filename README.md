@@ -1,5 +1,5 @@
 # ChatComSocketIO
-Testando SocketIO
+Testando SocketIO, Criar um chat em tempo real usando SocketIO e EJS
 
 # Para iniciar
  - execute no terminal "yarn dev"
